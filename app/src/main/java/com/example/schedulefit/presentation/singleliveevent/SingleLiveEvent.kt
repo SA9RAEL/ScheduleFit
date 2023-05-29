@@ -1,4 +1,4 @@
-package com.example.schedulefit.presentation.singleliveevemt
+package com.example.schedulefit.presentation.singleliveevent
 
 import android.util.Log
 import androidx.annotation.MainThread

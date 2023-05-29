@@ -8,8 +8,8 @@ import com.example.schedulefit.presentation.ListPresentationModel
 
 data class FitInfoPresentation(
     override val id: Int,
-    val lessons: List<LessonEntity>,
+    val lessons: List<LessonPresentation>,
     val option: OptionEntity,
-    val tabs: List<TabEntity>,
-    val trainers: List<TrainerEntity>
+    val tabs: List<TabPresentation>,
+    val trainers: List<TrainerPresentation>
 ) : ListPresentationModel

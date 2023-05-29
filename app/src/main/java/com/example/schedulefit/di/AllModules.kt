@@ -3,6 +3,9 @@ package com.example.schedulefit.di
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.room.Room
+import com.example.schedulefit.model.room.converters.LessonEntityConverter
+import com.example.schedulefit.model.room.converters.TabsEntityConverter
+import com.example.schedulefit.model.room.converters.TrainersEntityConverter
 import com.example.schedulefit.model.room.ScheduleDatabase
 import com.example.schedulefit.network.ScheduleApiService
 import com.example.schedulefit.presentation.viewmodel.ScheduleViewModel
@@ -54,6 +57,9 @@ abstract class AllModules {
         @Provides
         fun provideDb(context: Context): ScheduleDatabase =
             Room.databaseBuilder(context, ScheduleDatabase::class.java, ScheduleDatabase.DB_NAME)
+                .addTypeConverter(LessonEntityConverter::class)
+                .addTypeConverter(TabsEntityConverter::class)
+                .addTypeConverter(TrainersEntityConverter::class)
                 .build()
     }
 
