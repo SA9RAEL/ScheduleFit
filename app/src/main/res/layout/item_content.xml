@@ -85,6 +85,7 @@
             app:layout_constraintStart_toEndOf="@id/trainer_name" />
 
         <TextView
+            android:id="@+id/place_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"

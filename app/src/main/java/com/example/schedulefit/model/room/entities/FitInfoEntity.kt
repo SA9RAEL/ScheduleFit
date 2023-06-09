@@ -1,5 +1,6 @@
 package com.example.schedulefit.model.room.entities
 
+import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -8,13 +9,12 @@ import androidx.room.PrimaryKey
 data class FitInfoEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    @Embedded
+    @ColumnInfo(name = "lessons")
     val lessons: List<LessonEntity>,
     @Embedded
     val option: OptionEntity,
-    @Embedded
+    @ColumnInfo(name = "tabs")
     val tabs: List<TabEntity>,
-    @Embedded
+    @ColumnInfo(name = "trainers")
     val trainers: List<TrainerEntity>
 )
-

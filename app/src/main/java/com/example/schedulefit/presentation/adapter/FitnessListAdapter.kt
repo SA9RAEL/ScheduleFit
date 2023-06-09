@@ -7,9 +7,9 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessshedule.R
-import com.example.schedulefit.model.room.entities.FitInfoEntity
-import com.example.schedulefit.model.room.entities.LessonEntity
 import com.example.schedulefit.presentation.ListPresentationModel
+import com.example.schedulefit.presentation.models.FitInfoPresentation
+import com.example.schedulefit.presentation.models.LessonPresentation
 
 class FitnessListAdapter :
     ListAdapter<ListPresentationModel, RecyclerView.ViewHolder>(LESSONS_COMPARATOR) {
@@ -22,27 +22,32 @@ class FitnessListAdapter :
             LayoutInflater.from(parent.context).inflate(R.layout.item_header, parent, false)
         )
 
-        else -> ContentViewHolder(
+        VIEW_TYPE_CONTENT -> ContentViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_content, parent, false)
         )
+
+        else -> throw IllegalArgumentException("Invalid View Holder")
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is HeaderViewHolder -> holder.bind(getItem(position) as LessonEntity)
-            is ContentViewHolder -> holder.bind(getItem(position) as FitInfoEntity)
+            is HeaderViewHolder -> holder.bind(getItem(position) as LessonPresentation)
+            is ContentViewHolder -> holder.bind(getItem(position) as LessonPresentation)
         }
     }
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)) {
-            VIEW_TYPE_CONTENT ->
+            is LessonPresentation -> VIEW_TYPE_HEADER
+            else -> VIEW_TYPE_CONTENT
         }
     }
 
     companion object {
+
         private const val VIEW_TYPE_HEADER = 0
         private const val VIEW_TYPE_CONTENT = 1
+
         private val LESSONS_COMPARATOR = object : DiffUtil.ItemCallback<ListPresentationModel>() {
             override fun areItemsTheSame(
                 oldItem: ListPresentationModel,

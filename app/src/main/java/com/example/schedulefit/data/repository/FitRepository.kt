@@ -1,7 +1,7 @@
 package com.example.schedulefit.data.repository
 
 import androidx.lifecycle.LiveData
-import com.example.schedulefit.data.mapper.FitMapper
+import com.example.schedulefit.data.mapper.MapperFromResponseToEntity
 import com.example.schedulefit.model.room.ScheduleDatabase
 import com.example.schedulefit.model.room.entities.FitInfoEntity
 import com.example.schedulefit.network.ScheduleApiService
@@ -10,7 +10,7 @@ import javax.inject.Inject
 
 class FitRepository @Inject constructor(
     private val database: ScheduleDatabase,
-    private val fitMapper: FitMapper,
+    private val fitMapper: MapperFromResponseToEntity,
     private val api: ScheduleApiService
 ) {
 

@@ -3,10 +3,12 @@ package com.example.schedulefit.presentation.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.schedulefit.data.repository.FitRepository
 import com.example.schedulefit.model.room.entities.FitInfoEntity
 import com.example.schedulefit.network.Resource
+import com.example.schedulefit.presentation.ListPresentationModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
@@ -17,7 +19,9 @@ class ScheduleViewModel @Inject constructor(
     private val repository: FitRepository
 ) : ViewModel() {
 
-    val allFitnessInfo: LiveData<List<FitInfoEntity>> = repository.fitLessonsInfo
+    val allFitnessInfo: LiveData<ListPresentationModel> = repository.fitLessonsInfo.map {
+
+    }
 
     private val _state = MutableLiveData<Resource<FitInfoEntity>>()
     val state: LiveData<Resource<FitInfoEntity>> = _state
