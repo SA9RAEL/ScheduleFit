@@ -32,7 +32,7 @@ class FitnessListAdapter :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is HeaderViewHolder -> holder.bind(getItem(position) as LessonPresentation)
-            is ContentViewHolder -> holder.bind(getItem(position) as FitInfoPresentation)
+            is ContentViewHolder -> holder.bind(getItem(position) as LessonPresentation)
         }
     }
 
