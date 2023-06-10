@@ -19,9 +19,7 @@ class ScheduleViewModel @Inject constructor(
     private val repository: FitRepository
 ) : ViewModel() {
 
-    val allFitnessInfo: LiveData<ListPresentationModel> = repository.fitLessonsInfo.map {
-
-    }
+    // val allFitnessInfo: LiveData<ListPresentationModel> = repository.fitLessonsInfo
 
     private val _state = MutableLiveData<Resource<FitInfoEntity>>()
     val state: LiveData<Resource<FitInfoEntity>> = _state

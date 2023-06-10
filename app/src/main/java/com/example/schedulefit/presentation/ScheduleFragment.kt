@@ -30,13 +30,13 @@ class ScheduleFragment : BaseFragment(R.layout.fragment_schedule) {
         super.onViewCreated(view, savedInstanceState)
 
         val fitAdapter = FitnessListAdapter()
-        binding.recyclerView.adapter = fitAdapter
 
+        binding.recyclerView.adapter = fitAdapter
         binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
 
-        viewModel.allFitnessInfo.observe(viewLifecycleOwner) { allInfo ->
-            allInfo.let { fitAdapter.submitList(it) }
-        }
+//        viewModel.allFitnessInfo.observe(viewLifecycleOwner) { allInfo ->
+//            allInfo.let { fitAdapter.submitList(it) }
+//        }
     }
 
     override fun onCreateView(
